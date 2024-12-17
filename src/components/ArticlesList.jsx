@@ -26,11 +26,14 @@ function ArticlesList () {
 
     return (
         <>
-         <h2>Articles List</h2>
+         <h2>Latest News</h2>
+         <div className="grid-container">
+            <div className="articles-column">
          {articlesList.map((article) => (
             <Article article={article} key={article.article_id}/>
          ))}
-         
+           </div>
+         </div>
         </>
     )
 }
