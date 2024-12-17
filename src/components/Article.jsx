@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 function Article ({article}) {
    const formattedDate = 
         new Date(article.created_at).toLocaleDateString({
@@ -18,6 +20,7 @@ function Article ({article}) {
           <p>{formattedDate}</p>
           <p>Votes: {article.votes}</p>
           <p>Comments: {article.comment_count}</p>
+          <Link to={`/articles/${article.article_id}`}>Read more</Link>
         </div>
     )
 }
