@@ -1,14 +1,14 @@
 import { useEffect, useState } from "react";
-import { getArticleById, getArticleComments } from "../api";
+import { getArticleById } from "../api";
 import { useParams } from "react-router";
-import CommentCard from "./CommentCard";
+import CommentList from "./CommentList";
 import ErrorComponent from "./ErrorComponent";
 
 
 function ArticlePage() {
     const {article_id} = useParams();
     const [articleById, setArticleById] = useState({});
-    const [comments, setComments] = useState([])
+    
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
  
@@ -23,17 +23,6 @@ function ArticlePage() {
             setLoading(false);
 
         });
-
-        getArticleComments(article_id)
-        .then((comments) => {
-            setComments(comments);
-            setLoading(false);
-        })
-        .catch((error) => {
-            setError(error);
-            setLoading(false);
-    
-            }) 
         
     },[article_id])
 
@@ -61,9 +50,7 @@ function ArticlePage() {
           <p>{formattedDate}</p>
           <p>Votes: {articleById.votes}</p>
           <section>
-            <h3 className="comment-title">Comments</h3>
-            {comments.map((comment) => (
-                    <CommentCard comment={comment} key={comment.comment_id} />))}
+            <CommentList article_id="article_id" />
           </section>
         </article>
     )
