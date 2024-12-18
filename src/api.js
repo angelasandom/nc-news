@@ -22,7 +22,11 @@ function getArticleComments(article_id) {
     })
 }
 
+function updateArticleById(article_id) {
+    return api.patch(`/articles/${article_id}`, {inc_votes: 1}).then((response) => {
+        console.log("patch complete")
+    })
+}
 
 
-
-export {getArticles,getArticleById, getArticleComments}
+export {getArticles,getArticleById, getArticleComments, updateArticleById}
