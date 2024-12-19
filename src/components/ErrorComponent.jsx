@@ -1,8 +1,8 @@
-const ErrorComponent = ({ message }) => {
+const ErrorComponent = ({ message="There was an error", error }) => {
     return (
       <div>
-        <h1>No article found</h1>
         <p>{message}</p>
+        {error && <p>Details: {error.message}</p>}
       </div>
     );
   };
