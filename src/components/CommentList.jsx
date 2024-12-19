@@ -3,6 +3,7 @@ import { getArticleComments } from "../api";
 import { useParams } from "react-router";
 import CommentCard from "./CommentCard";
 import ErrorComponent from "./ErrorComponent";
+import CommentForm from "./CommentForm";
 
 function CommentList() {
     const {article_id} = useParams();
@@ -11,29 +12,35 @@ function CommentList() {
     const [error, setError] = useState(null);
 
     useEffect(() => {
+        setLoading(true);
         getArticleComments(article_id)
-        .then((comments) => {
-            setComments(comments);
+        .then((fetchedComments) => {
+            setComments(fetchedComments);
             setLoading(false);
         })
         .catch((error) => {
             setError(error);
             setLoading(false);
-    
             }) 
        
     },[article_id])
 
-    if(loading) return <p>Loading articles</p> 
+    if(loading) return <p>Loading comments</p> 
     if (error) {
         return <ErrorComponent message={error.message} />;
       }
 
     return (
         <>
-        <h3 className="comment-title">Comments</h3>
-            {comments.map((comment) => (
-            <CommentCard comment={comment} key={comment.comment_id} />))}
+         <h3 className="comment-title">Comments</h3>
+        {comments.length > 0 ? (
+            comments.map((comment) => (
+            <CommentCard comment={comment} key={comment.comment_id} />
+            ))
+        ) : (
+            <p>No comments yet.</p>
+        )}
+        <CommentForm articleId={article_id} setComments={setComments} />
         </>
     )
 }

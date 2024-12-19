@@ -1,17 +1,9 @@
 import { Link } from "react-router-dom";
 import VoteHandler from "./VoteHandler";
-
+import formatDate from "../../utils/formatDate";
 
 function Article ({article}) {
-   const formattedDate = 
-        new Date(article.created_at).toLocaleDateString({
-            year: "numeric",
-            month: "long",
-            day: "numeric",
-            hour: "2-digit",
-            minute: "2-digit",
-        });
-    
+    const formattedDate = formatDate(article.created_at);
     return (
         <div className="article-card">
           <h2>{article.title}</h2>

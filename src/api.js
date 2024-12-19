@@ -24,9 +24,15 @@ function getArticleComments(article_id) {
 
 function updateArticleById(article_id) {
     return api.patch(`/articles/${article_id}`, {inc_votes: 1}).then((response) => {
-        console.log("patch complete")
+        response.data.votes
     })
 }
 
 
-export {getArticles,getArticleById, getArticleComments, updateArticleById}
+function postCommentByArticleId(article_id, comment) {
+    return api.post(`/articles/${article_id}/comments`,comment).then((response) => {
+        return response.data.comment
+    })
+}
+
+export {getArticles,getArticleById, getArticleComments, updateArticleById, postCommentByArticleId}

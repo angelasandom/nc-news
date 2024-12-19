@@ -10,7 +10,6 @@ function ArticlesList () {
     useEffect(() => {
         const fetchArticle = axios.get("https://my-nc-news-2ql9.onrender.com/api/articles")
         .then((response) => {
-            console.log(response.data);
             setArticlesList(response.data.articles);
             setLoading(false);
         })
@@ -23,6 +22,10 @@ function ArticlesList () {
     },[])
 
     if(loading) return <p>Loading articles</p>
+    if (error) {
+        return <ErrorComponent message="The articles can't be found." />;
+      }
+    
 
     return (
         <>

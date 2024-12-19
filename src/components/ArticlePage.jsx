@@ -3,12 +3,11 @@ import { getArticleById } from "../api";
 import { useParams } from "react-router";
 import CommentList from "./CommentList";
 import ErrorComponent from "./ErrorComponent";
-
+import formatDate from "../../utils/formatDate";
 
 function ArticlePage() {
     const {article_id} = useParams();
     const [articleById, setArticleById] = useState({});
-    
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
  
@@ -28,16 +27,10 @@ function ArticlePage() {
 
     if(loading) return <p>Loading articles</p> 
     if (error) {
-        return <ErrorComponent message={error.message} />;
+        return <ErrorComponent message="The article can't be found." />;
       }
-
-    const formattedDate = new Date(articleById.created_at).toLocaleDateString({
-        year: "numeric",
-        month: "long",
-        day: "numeric",
-        hour: "2-digit",
-        minute: "2-digit",
-    });
+    
+    const formattedDate = formatDate(articleById.created_at); 
 
     return (
         <article className="article-page">
@@ -50,7 +43,7 @@ function ArticlePage() {
           <p>{formattedDate}</p>
           <p>Votes: {articleById.votes}</p>
           <section>
-            <CommentList article_id="article_id" />
+            <CommentList article_id={article_id} />
           </section>
         </article>
     )
