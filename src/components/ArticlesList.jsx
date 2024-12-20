@@ -6,7 +6,7 @@ import ErrorComponent from "./ErrorComponent";
 
 function ArticlesList () {
     const [articlesList, setArticlesList] = useState([]);
-    const [loading, setLoading] = useState(true)
+    const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
     
     useEffect(() => {
@@ -30,8 +30,8 @@ function ArticlesList () {
     
 
     return (
-        <>
-         <h2>Latest News</h2>
+        <section id="article-list">
+         <h1>Latest News</h1>
          <div className="grid-container">
             <div className="articles-column">
          {articlesList.map((article) => (
@@ -39,7 +39,7 @@ function ArticlesList () {
          ))}
            </div>
          </div>
-        </>
+        </section>
     )
 }
 
