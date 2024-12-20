@@ -35,4 +35,10 @@ function postCommentByArticleId(article_id, comment) {
     })
 }
 
-export {getArticles,getArticleById, getArticleComments, updateArticleById, postCommentByArticleId}
+function getArticlesByTopic(topic) {
+    return api.get(`articles?topic=${topic}`).then((response) => {
+        return response.data.articles
+    })
+}
+
+export {getArticles,getArticleById, getArticleComments, updateArticleById, postCommentByArticleId, getArticlesByTopic}
