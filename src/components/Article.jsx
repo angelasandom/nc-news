@@ -14,7 +14,7 @@ function Article ({article}) {
           <p>{formattedDate}</p>
           <VoteHandler votes={article.votes} article_id={article.article_id}/>
           <p>Comments: {article.comment_count}</p>
-          <Link to={`/articles/${article.article_id}`}>Read more</Link>
+          <Link to={`/articles/${article.article_id}`} className="read-more">Read more</Link>
         </div>
     )
 }
