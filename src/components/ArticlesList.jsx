@@ -2,10 +2,12 @@ import Article from "./Article"
 import axios from "axios"
 import { getArticles } from "../api";
 import { useState, useEffect } from "react"
+import ErrorComponent from "./ErrorComponent";
 
 function ArticlesList () {
     const [articlesList, setArticlesList] = useState([]);
     const [loading, setLoading] = useState(true)
+    const [error, setError] = useState(null);
     
     useEffect(() => {
         const fetchArticle = axios.get("https://my-nc-news-2ql9.onrender.com/api/articles")
@@ -14,7 +16,7 @@ function ArticlesList () {
             setLoading(false);
         })
         .catch((error) => {
-            console.log(error);
+            setError(true)
             setLoading(false);
 
         })

@@ -1,4 +1,5 @@
 import formatDate from "../../utils/formatDate";
+
 function CommentCard({comment}) {
     const formattedDate = formatDate(comment.created_at);
     return (

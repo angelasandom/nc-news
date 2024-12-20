@@ -1,7 +1,7 @@
 #logo {
-  color: #eb1c24;
-  margin: 20px 0;
-  font-size: 42px;
+  margin: -20px;
+  padding-bottom: 30px;
+  max-height: 250px;
 }
 
 .grid-container {
@@ -28,6 +28,9 @@
   border-radius: 8px;
   padding: 20px;
   margin: 40px auto;
+}
+.article-card:hover {
+  background-color: rgb(255, 225, 225);
 }
 article h1 {
   text-align: center;
