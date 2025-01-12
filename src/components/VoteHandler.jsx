@@ -14,7 +14,7 @@ function VoteHandler({votes, article_id}) {
     return (
         <>
           <p>Votes: {votes + votesAdded}</p>
-          <button onClick={handleClick}>Vote this article</button>
+          <button class="vote-button" onClick={handleClick}>Vote this article</button>
         </>
     )
 }

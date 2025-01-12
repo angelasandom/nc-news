@@ -31,18 +31,19 @@ function CommentList() {
       }
 
     return (
-        <>
-         <h3 className="comment-title">Comments</h3>
+    <>
+        <CommentForm articleId={article_id} setComments={setComments} />
+        <h3 class="comment-title">Comments</h3>
         {comments.length > 0 ? (
             comments.map((comment) => (
-            <CommentCard comment={comment} key={comment.comment_id} />
+                <CommentCard comment={comment} key={comment.comment_id} />
             ))
         ) : (
             <p>No comments yet.</p>
         )}
-        <CommentForm articleId={article_id} setComments={setComments} />
-        </>
-    )
+    </>
+);
+
 }
 
 export default CommentList
