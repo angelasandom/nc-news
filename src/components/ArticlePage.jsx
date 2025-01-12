@@ -4,6 +4,7 @@ import { useParams } from "react-router";
 import CommentList from "./CommentList";
 import ErrorComponent from "./ErrorComponent";
 import formatDate from "../../utils/formatDate";
+import VoteHandler from "./VoteHandler";
 
 function ArticlePage() {
     const {article_id} = useParams();
@@ -41,7 +42,7 @@ function ArticlePage() {
           <p>Id: {articleById.article_id}</p>
           <p>{articleById.topic}</p>
           <p>{formattedDate}</p>
-          <p>Votes: {articleById.votes}</p>
+          <VoteHandler votes={articleById.votes} article_id={article_id} />
           <section>
             <CommentList article_id={article_id} />
           </section>
