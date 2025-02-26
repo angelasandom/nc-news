@@ -2,8 +2,8 @@ import Nav from "./Nav"
 function Header () {
     return (
         <header>
-        <img src="nc-news-logo.png" id="logo"/>
-        <Nav />
+            <a href="/"><img src="nc-news-logo.png" id="logo"/></a>
+            <Nav />
         </header>
     )
 }
