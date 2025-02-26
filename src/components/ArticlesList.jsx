@@ -31,13 +31,11 @@ function ArticlesList () {
 
     return (
         <section id="article-list">
-         <h1>Latest News</h1>
+         <h1>LATEST NEWS</h1>
          <div className="grid-container">
-            <div className="articles-column">
          {articlesList.map((article) => (
             <Article article={article} key={article.article_id}/>
          ))}
-           </div>
          </div>
         </section>
     )

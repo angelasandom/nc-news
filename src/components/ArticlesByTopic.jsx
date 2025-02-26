@@ -32,7 +32,7 @@ function ArticlesByTopic() {
     return (
       <section id="article-by-topic">
       <h1>Your news about {topic}</h1>
-      <div className="articles-container">
+      <div className="grid-container">
         {articles.map((article) => (
           <Article article={article} key={article.article_id} />
         ))}
